@@ -1,0 +1,16 @@
+---
+- name: "configure"
+  hosts: juniper
+  gather_facts: false
+  connection: local
+  roles:
+    - Juniper.junos
+
+  tasks:
+    - name: "send set config"
+      junos_config:
+        lines:
+          - set system syslog host ip_address port 514 any warning
+          - set system syslog file messages any warning
+          - set snmp community public authorization read-only
+        comment: update config

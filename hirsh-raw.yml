@@ -1,0 +1,19 @@
+---
+- name: "snmp"
+  hosts: hiershman
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: snmp com
+      cli_command:
+        command: enable
+        command: configure
+        command: snmp-server community public ro
+
+    - name: snmp ver
+      cli_command:
+        command: enable
+        command: configure
+        command: snmp-access version v2 enable
